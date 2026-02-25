@@ -77,7 +77,7 @@ export class ReportsService {
     ] of Object.entries(formData)) {
       httpParams = httpParams.set(key, value);
     }
-    return this.http.get(`/runreports/${reportName}`, { params: httpParams });
+    return this.http.get(`/runreports/${encodeURIComponent(reportName)}`, { params: httpParams });
   }
 
   /**
@@ -95,7 +95,7 @@ export class ReportsService {
       httpParams = httpParams.set(key, value);
     }
     return this.http
-      .get(`/runreports/${reportName}`, { params: httpParams })
+      .get(`/runreports/${encodeURIComponent(reportName)}`, { params: httpParams })
       .pipe(map((response: any) => new ChartData(response)));
   }
 
@@ -122,7 +122,7 @@ export class ReportsService {
     ] of Object.entries(formData)) {
       httpParams = httpParams.set(key, value);
     }
-    return this.http.get(`/runreports/${reportName}`, {
+    return this.http.get(`/runreports/${encodeURIComponent(reportName)}`, {
       responseType: 'arraybuffer',
       observe: 'response',
       params: httpParams
